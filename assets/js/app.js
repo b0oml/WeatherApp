@@ -27,6 +27,9 @@ $(document).ready(function(){
         // Go to the next day
         date = date.add(1, 'days')
     }
+    // Loading...
+    loading = $('#search-loading');
+    loading.attr('class', 'loading inload');
     // Get and update meteo
     getMeteoByCity(city, function (data, error) {
         if (error == null) {
@@ -36,6 +39,10 @@ $(document).ready(function(){
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
+        // Stop loader
+        setTimeout(function () {
+            loading.attr('class', 'loading')
+        }, 500);
     });
 });
 
@@ -55,11 +62,11 @@ $("#meteo-form").submit(function (event) {
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
+        // Stop loader
+        setTimeout(function () {
+            loading.attr('class', 'loading')
+        }, 500);
     });
-    // Stop loader
-    setTimeout(function(){
-        loading.attr('class', 'loading')
-    }, 500);
     // Don't refresh the page
     return false;
 });
@@ -81,11 +88,11 @@ $("#geolocation").click(function (event) {
                 meteoTitle = $('#meteo-title span');
                 meteoTitle.html('Can\'t  get meteo for your position');
             }
+            // Stop loader
+            setTimeout(function () {
+                loading.attr('class', 'loading')
+            }, 500);
         });
-        // Stop loader
-        setTimeout(function () {
-            loading.attr('class', 'loading')
-        }, 500);
     });
 });
 
