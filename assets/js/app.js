@@ -142,7 +142,7 @@ function displaySunriseSunset(lat, long){
 function displayMeteo(data){
     // Update Google Map URL
     googleMapCity = "https://www.google.fr/maps/place/" + data.city.coord.lat + "," + data.city.coord.lon;
-    $('#meteo-title span').html('Weather for <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
+    $('#meteo-title span').html('Weather in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
     // Update meteo for each day
     var tempMoyenne = 0;
     for (var i = 0; i < 3; i++){
